@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ansh Agrawal — AI/ML Project Portfolio</title>
+  <meta name="description" content="Five AI/ML projects — graph neural networks, NLP, tabular ML, multi-agent LLM systems and retrieval-augmented generation — each with a research interface, re-evaluation and documented limitations.">
+  <meta property="og:title" content="Ansh Agrawal — AI/ML Project Portfolio">
+  <meta property="og:description" content="Graph neural networks, NLP, tabular ML, multi-agent LLM systems and RAG, with evaluation and documented limitations.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/gnn.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/core.css">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231f3a5f'/%3E%3Ctext x='16' y='21.5' font-family='Georgia,serif' font-size='15' font-weight='600' fill='%23fff' text-anchor='middle'%3EAA%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="app-header">
+  <div class="container">
+    <a class="brand" href="#top" aria-label="Ansh Agrawal, top of page">
+      <span class="monogram" aria-hidden="true">AA</span>
+      <span>
+        <span class="brand-name">Ansh Agrawal</span>
+        <span class="brand-sub">AI/ML project portfolio</span>
+      </span>
+    </a>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Open navigation">
+      <svg width="18" height="18" viewBox="0 0 18 18" aria-hidden="true"><path d="M2 4h14M2 9h14M2 14h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+    </button>
+    <nav class="header-nav" id="site-nav" aria-label="Sections">
+      <a href="#projects">Projects</a>
+      <a href="#approach">Approach</a>
+      <a href="#origin">How these were built</a>
+      <a href="https://github.com/anshaiml369" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container" id="top">
+    <section class="hero">
+      <p class="eyebrow">Machine learning · deep learning · LLM systems</p>
+      <h1 class="hero-title">Five AI/ML projects, each evaluated and documented, with the limitations stated.</h1>
+      <p class="hero-lede">
+        The projects cover graph neural networks, recurrent NLP models, calibrated tabular classification, tool-using LLM agents and
+        retrieval-augmented generation. Each started from a public tutorial and was then extended with a research interface, a
+        re-evaluation of the shipped model or pipeline, and a written account of what the results do and do not show.
+      </p>
+      <ul class="hero-facts" aria-label="Portfolio at a glance">
+        <li><strong>5</strong><span>projects</span></li>
+        <li><strong>3</strong><span>models re-evaluated from shipped artifacts</span></li>
+        <li><strong>2</strong><span>LLM pipelines tested end-to-end with live APIs</span></li>
+      </ul>
+    </section>
+  </div>
+
+  <section class="section" id="projects" aria-labelledby="projects-title">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <h2 class="section-title" id="projects-title">Projects</h2>
+          <p class="section-desc">
+            Metrics labelled <span class="tag tag-live">re-evaluated</span> were recomputed from the saved model files.
+            <span class="tag">notebook</span> marks numbers copied from training-notebook outputs. <span class="tag tag-run">measured</span>
+            marks numbers from a real end-to-end run.
+          </p>
+        </div>
+      </div>
+
+      <!-- 1 · GNN -->
+      <article class="project" id="gnn" aria-labelledby="gnn-title">
+        <figure class="shot"><img src="assets/gnn.jpg" width="1440" height="900" loading="lazy" alt="Cora GCN explorer showing a paper's two-hop citation neighbourhood graph, the predicted topic with class probabilities, and an edge-ablation note."></figure>
+        <div class="project-body">
+          <p class="eyebrow">Graph neural networks · node classification</p>
+          <h3 class="project-title" id="gnn-title">Topic classification on the Cora citation graph</h3>
+          <p class="project-lede">A two-layer graph convolutional network labels 2,708 papers with one of seven topics, using each paper's word features and its citation links. The model runs in ONNX Runtime behind FastAPI.</p>
+          <dl class="metrics">
+            <div><dt>Test accuracy</dt><dd>0.792</dd><span class="tag tag-live">re-evaluated</span></div>
+            <div><dt>Test macro-F1</dt><dd>0.782</dd><span class="tag tag-live">re-evaluated</span></div>
+            <div><dt>Edges removed</dt><dd>0.678</dd><span class="tag tag-live">re-evaluated</span></div>
+            <div><dt>Random-forest baseline</dt><dd>0.581</dd><span class="tag">notebook</span></div>
+          </dl>
+          <details class="disclosure">
+            <summary>What was added and what the results show</summary>
+            <div class="disclosure-body">
+              <ul class="bullets">
+                <li>Interactive 1- and 2-hop citation-neighbourhood graph, built from the real Cora edges.</li>
+                <li>Edge-ablation experiment: the same model with every citation replaced by a self-loop drops from 0.792 to 0.678 accuracy, which quantifies what message passing adds.</li>
+                <li>Live evaluation of the exported model: confusion matrix and per-class metrics.</li>
+                <li><strong>Limitations noted:</strong> one training run with no seed variance; the exported weights are from the final epoch rather than the best one (because of how the notebook saved its checkpoint); training accuracy is 1.000 (overfitting); the setting is transductive.</li>
+              </ul>
+            </div>
+          </details>
+          <p class="stack-line">PyTorch Geometric · ONNX Runtime · FastAPI · vanilla JS / SVG</p>
+          <p class="links"><a class="btn btn-sm" href="https://github.com/anshaiml369/cora-gcn-explorer">Code</a><span class="badge">Live demo: not deployed yet</span></p>
+        </div>
+      </article>
+
+      <!-- 2 · Emotion -->
+      <article class="project" id="emotion" aria-labelledby="emotion-title">
+        <figure class="shot"><img src="assets/emotion.jpg" width="1440" height="900" loading="lazy" alt="Text emotion classifier showing the sentence “I feel so alone and hopeless today” predicted as sadness with a probability distribution over six labels."></figure>
+        <div class="project-body">
+          <p class="eyebrow">Natural language processing · recurrent networks</p>
+          <h3 class="project-title" id="emotion-title">Emotion-label prediction with a bidirectional GRU</h3>
+          <p class="project-lede">A stacked BiGRU (3.45 M parameters) trained on dair-ai/emotion predicts one of six labels for short English text. It reports the full probability distribution and shows the cleaned tokens the model actually reads.</p>
+          <dl class="metrics">
+            <div><dt>Test accuracy</dt><dd>0.921</dd><span class="tag tag-live">re-evaluated</span></div>
+            <div><dt>Macro-F1</dt><dd>0.880</dd><span class="tag tag-live">re-evaluated</span></div>
+            <div><dt>Calibration error</dt><dd>0.048</dd><span class="tag tag-live">re-evaluated</span></div>
+            <div><dt>Weakest class F1</dt><dd>0.755</dd><span class="tag tag-live">surprise</span></div>
+          </dl>
+          <details class="disclosure">
+            <summary>What was added and what the results show</summary>
+            <div class="disclosure-body">
+              <ul class="bullets">
+                <li>Re-evaluation script that scores the shipped model on the 2,000-sentence test split through the API's own preprocessing; it reproduces the notebook's 0.921.</li>
+                <li>Confusion matrix, reliability diagram, per-label metrics and the most confident errors.</li>
+                <li>Batch comparison mode; flags when the top two labels are close or when input is longer than the model reads.</li>
+                <li><strong>Limitations noted:</strong> the test split was also used for early stopping, so the score is optimistic; there is no neutral class; the domain is narrow; the output is a dataset-label prediction, not a measure of anyone's emotional state.</li>
+              </ul>
+            </div>
+          </details>
+          <p class="stack-line">TensorFlow / Keras · FastAPI · Hugging Face Datasets · vanilla JS</p>
+          <p class="links"><a class="btn btn-sm" href="https://github.com/anshaiml369/text-emotion-bigru">Code</a><span class="badge">Live demo: not deployed yet</span></p>
+        </div>
+      </article>
+
+      <!-- 3 · Credit -->
+      <article class="project" id="credit" aria-labelledby="credit-title">
+        <figure class="shot"><img src="assets/credit.jpg" width="1440" height="900" loading="lazy" alt="Credit default model showing an application form, an estimated default probability of 3.5 percent against a 69.5 percent threshold, and the observed default rate for similar scores."></figure>
+        <div class="project-body">
+          <p class="eyebrow">Tabular ML · probability calibration</p>
+          <h3 class="project-title" id="credit-title">Calibrated loan-default probability with XGBoost</h3>
+          <p class="project-lede">An XGBoost pipeline, tuned by randomized search and wrapped in sigmoid calibration, estimates default probability from 11 application features. Each estimate is shown next to the default rate actually observed among held-out applicants with similar scores.</p>
+          <dl class="metrics">
+            <div><dt>ROC-AUC</dt><dd>0.953</dd><span class="tag tag-live">re-evaluated</span></div>
+            <div><dt>PR-AUC</dt><dd>0.910</dd><span class="tag tag-live">re-evaluated</span></div>
+            <div><dt>Precision @ threshold</dt><dd>0.967</dd><span class="tag tag-live">re-evaluated</span></div>
+            <div><dt>Recall @ threshold</dt><dd>0.742</dd><span class="tag tag-live">re-evaluated</span></div>
+          </dl>
+          <details class="disclosure">
+            <summary>What was added and what the results show</summary>
+            <div class="disclosure-body">
+              <ul class="bullets">
+                <li>Reproduced the notebook's exact stratified split (6,305 test rows) and re-scored the shipped calibrated model.</li>
+                <li>Threshold explorer, PR/ROC curves, calibration curve and permutation importance.</li>
+                <li>Sensitivity tool that varies one input and queries the real model at each value.</li>
+                <li><strong>Limitations noted:</strong> the notebook's threshold search used an incorrect F1 formula and the test set; mid-range probabilities are over-confident; lender-assigned grade and interest rate are inputs; no fairness audit. This is not a lending tool.</li>
+              </ul>
+            </div>
+          </details>
+          <p class="stack-line">scikit-learn · XGBoost · FastAPI · vanilla JS / SVG</p>
+          <p class="links"><a class="btn btn-sm" href="https://github.com/anshaiml369/credit-default-xgboost">Code</a><span class="badge">Live demo: not deployed yet</span></p>
+        </div>
+      </article>
+
+      <!-- 4 · Multi-agent -->
+      <article class="project" id="agents" aria-labelledby="agents-title">
+        <figure class="shot"><img src="assets/multiagent.jpg" width="1440" height="900" loading="lazy" alt="Multi-agent research workbench in dark mode, showing four completed pipeline stages with timings, a generated research report on CRISPR gene editing, and measured token usage."></figure>
+        <div class="project-body">
+          <p class="eyebrow">Agentic AI · tool-using LLM agents</p>
+          <h3 class="project-title" id="agents-title">Sequential multi-agent research pipeline</h3>
+          <p class="project-lede">A search agent (Tavily), a reader agent (web scraping), a writer chain and a critic chain turn a topic into a structured report with a self-critique. The workbench shows each stage live, along with the measured cost.</p>
+          <dl class="metrics">
+            <div><dt>End-to-end run</dt><dd>27–32 s</dd><span class="tag tag-run">measured</span></div>
+            <div><dt>Tokens per run</dt><dd>≈4.5–5.8 k</dd><span class="tag tag-run">measured</span></div>
+            <div><dt>Cost per run</dt><dd>$0.0014–0.0018</dd><span class="tag tag-run">measured</span></div>
+            <div><dt>Cited URLs found in sources</dt><dd>5 / 5</dd><span class="tag tag-run">one test run</span></div>
+          </dl>
+          <details class="disclosure">
+            <summary>What was added and what the results show</summary>
+            <div class="disclosure-body">
+              <ul class="bullets">
+                <li>Replaced the Streamlit UI with a FastAPI server that calls the original pipeline unchanged, with live stage tracking.</li>
+                <li>Token and cost measurement via LangChain's OpenAI callback.</li>
+                <li>Structural checks on each report, plus a check of whether every cited URL appears in the material the agents actually gathered.</li>
+                <li><strong>Limitations noted:</strong> the critic is the same model grading its own pipeline (LLM-as-judge with no reference answer); the reader sees one page; web results change, so runs are not exactly reproducible.</li>
+              </ul>
+            </div>
+          </details>
+          <p class="stack-line">LangChain · OpenAI gpt-4o-mini · Tavily · FastAPI · vanilla JS</p>
+          <p class="links"><a class="btn btn-sm" href="https://github.com/anshaiml369/multi-agent-research-workbench">Code</a><span class="badge">Live demo: not deployed yet</span></p>
+        </div>
+      </article>
+
+      <!-- 5 · Video RAG -->
+      <article class="project" id="video" aria-labelledby="video-title">
+        <figure class="shot"><img src="assets/video.jpg" width="1440" height="900" loading="lazy" alt="AI video assistant studio with a YouTube video preview, source and language controls, and six completed processing stages from audio extraction to indexing."></figure>
+        <div class="project-body">
+          <p class="eyebrow">Speech recognition · retrieval-augmented generation</p>
+          <h3 class="project-title" id="video-title">Question answering over what is said in a video</h3>
+          <p class="project-lede">Audio from a YouTube link or an uploaded file is transcribed (Whisper, or Sarvam for Hinglish), summarised by an LLM, and indexed in Chroma. Each answer is shown next to the transcript passages it was given.</p>
+          <dl class="metrics">
+            <div><dt>Whisper errors, 40 s test clip</dt><dd>1 / ≈110 words</dd><span class="tag tag-run">measured</span></div>
+            <div><dt>Cross-video passages, before fix</dt><dd>4 / 4</dd><span class="tag tag-run">measured</span></div>
+            <div><dt>Cross-video passages, after fix</dt><dd>0 / 4</dd><span class="tag tag-run">measured</span></div>
+            <div><dt>Unanswerable question</dt><dd>Says not found</dd><span class="tag tag-run">measured</span></div>
+          </dl>
+          <details class="disclosure">
+            <summary>What was added and what the results show</summary>
+            <div class="disclosure-body">
+              <ul class="bullets">
+                <li>Replaced the Streamlit UI with a job-based FastAPI server, upload limits and URL allow-listing.</li>
+                <li>Shows the retrieved evidence for every answer, with distances and a flag for passages not from the current video.</li>
+                <li>Found and fixed a bug where the saved vector store accumulated chunks across videos, so answers could draw on the wrong recording.</li>
+                <li><strong>Limitations noted:</strong> no timestamps or speaker labels; long recordings may exceed the LLM context; only one video can be indexed at a time.</li>
+              </ul>
+            </div>
+          </details>
+          <p class="stack-line">Whisper · Sarvam · LangChain · Mistral · Chroma · MiniLM embeddings · FastAPI</p>
+          <p class="links"><a class="btn btn-sm" href="https://github.com/anshaiml369/ai-video-assistant-rag">Code</a><span class="badge">Live demo: not deployed yet</span></p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="approach" aria-labelledby="approach-title">
+    <div class="container">
+      <div class="section-head"><h2 class="section-title" id="approach-title">Approach</h2></div>
+      <div class="grid-3">
+        <div class="principle"><h3>Re-evaluate the shipped artifact</h3><p>Metrics come from the saved model files, scored on the original splits, rather than being copied from a single notebook run.</p></div>
+        <div class="principle"><h3>Show the evidence</h3><p>Interfaces display probability distributions, retrieved passages, confusion matrices and calibration curves, not just a single label.</p></div>
+        <div class="principle"><h3>State the limitations</h3><p>Each project lists known issues found during review, such as data leakage, checkpointing bugs and an incorrect threshold formula, including the ones not yet fixed.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="origin" aria-labelledby="origin-title">
+    <div class="container">
+      <div class="section-head"><h2 class="section-title" id="origin-title">How these were built</h2></div>
+      <div class="origin">
+        <p>Each project began from a public YouTube tutorial, which provided the original model or pipeline code. On top of that, the work shown here adds: research interfaces in HTML, CSS and JavaScript (replacing Streamlit where it was used); re-evaluation of the saved models; error and calibration analysis; bug investigation (the vector-store fix in the video project); and written documentation of limitations. The core model and pipeline code comes from those tutorials; each repository's README describes what was added on top.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="app-footer">
+  <div class="container">
+    <p>Personal portfolio of Ansh Agrawal. Not affiliated with, sponsored by or endorsed by any university or research institute.</p>
+    <p class="mono"><a href="https://github.com/anshaiml369">github.com/anshaiml369</a></p>
+  </div>
+</footer>
+
+<script src="js/core.js"></script>
+</body>
+</html>
