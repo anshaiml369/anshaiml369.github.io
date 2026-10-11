@@ -160,16 +160,16 @@
 
       <!-- 4 · Multi-agent -->
       <article class="project" id="agents" aria-labelledby="agents-title">
-        <figure class="shot"><img src="assets/multiagent.jpg" width="1440" height="842" loading="lazy" alt="Scholaryx multi-agent research workbench in dark mode, showing four completed pipeline stages with timings, a generated research report on CRISPR gene editing, and measured token usage."></figure>
+        <figure class="shot"><img src="assets/multiagent.jpg" width="1440" height="900" loading="lazy" alt="Scholaryx multi-agent research workbench in dark mode, showing four completed pipeline stages with timings, a generated research report on CRISPR gene editing, and measured token usage."></figure>
         <div class="project-body">
           <p class="eyebrow">Agentic AI · tool-using LLM agents</p>
           <h3 class="project-title" id="agents-title">Scholaryx: a sequential multi-agent research pipeline</h3>
           <p class="project-lede">A search agent (Tavily), a reader agent (web scraping), a writer chain and a critic chain turn a topic into a structured report with a self-critique. The workbench shows each stage live, along with the measured cost.</p>
           <dl class="metrics">
-            <div><dt>End-to-end run</dt><dd>27–32 s</dd><span class="tag tag-run">measured</span></div>
-            <div><dt>Tokens per run</dt><dd>≈4.5–5.8 k</dd><span class="tag tag-run">measured</span></div>
+            <div><dt>End-to-end run</dt><dd>27–43 s</dd><span class="tag tag-run">measured</span></div>
+            <div><dt>Tokens per run</dt><dd>≈4.5–5.9 k</dd><span class="tag tag-run">measured</span></div>
             <div><dt>Cost per run</dt><dd>$0.0014–0.0018</dd><span class="tag tag-run">measured</span></div>
-            <div><dt>Cited URLs found in sources</dt><dd>5 / 5</dd><span class="tag tag-run">one test run</span></div>
+            <div><dt>Cited URLs found in sources</dt><dd>5 / 5</dd><span class="tag tag-run">each of 2 live runs</span></div>
           </dl>
           <details class="disclosure">
             <summary>What was added and what the results show</summary>
@@ -183,7 +183,7 @@
             </div>
           </details>
           <p class="stack-line">LangChain · OpenAI gpt-4o-mini · Tavily · FastAPI · vanilla JS</p>
-          <p class="links"><a class="btn btn-sm" href="https://github.com/anshaiml369/scholaryx">Code</a><span class="badge">Live demo: not deployed yet</span></p>
+          <p class="links"><a class="btn btn-sm btn-primary" href="https://scholaryx.onrender.com/">Live demo</a><a class="btn btn-sm" href="recordings/scholaryx.mp4">Watch demo (1 min)</a><a class="btn btn-sm" href="https://github.com/anshaiml369/scholaryx">Code</a><span class="badge">Live runs use paid APIs: limited to 20 a day and 3 per visitor per hour</span></p>
         </div>
       </article>
 
