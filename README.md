@@ -5,11 +5,11 @@ served by GitHub Pages. It summarises five projects and links to each one's repo
 
 | Project | Repository |
 |---|---|
-| Topic classification on the Cora citation graph (GCN) | [cora-gcn-explorer](https://github.com/anshaiml369/cora-gcn-explorer) |
-| Emotion-label prediction with a bidirectional GRU | [text-emotion-bigru](https://github.com/anshaiml369/text-emotion-bigru) |
-| Calibrated loan-default probability with XGBoost | [credit-default-xgboost](https://github.com/anshaiml369/credit-default-xgboost) |
-| Sequential multi-agent research pipeline | [multi-agent-research-workbench](https://github.com/anshaiml369/multi-agent-research-workbench) |
-| Question answering over what is said in a video (RAG) | [ai-video-assistant-rag](https://github.com/anshaiml369/ai-video-assistant-rag) |
+| GraphMind: topic classification on the Cora citation graph (GCN) | [graphmind](https://github.com/anshaiml369/graphmind) · [live demo](https://graphmind-n10l.onrender.com/) |
+| Moodalyx: emotion-label prediction with a bidirectional GRU | [moodalyx](https://github.com/anshaiml369/moodalyx) |
+| CreditCompass: calibrated loan-default probability with XGBoost | [creditcompass](https://github.com/anshaiml369/creditcompass) |
+| Scholaryx: a sequential multi-agent research pipeline | [scholaryx](https://github.com/anshaiml369/scholaryx) |
+| Verbalyx: question answering over what is said in a video (RAG) | [verbalyx](https://github.com/anshaiml369/verbalyx) |
 
 Each project began from a public YouTube tutorial and was extended with a research interface, re-evaluation,
 error analysis and documented limitations. Every metric on the page is labelled with its source.

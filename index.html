@@ -73,10 +73,10 @@
 
       <!-- 1 · GNN -->
       <article class="project" id="gnn" aria-labelledby="gnn-title">
-        <figure class="shot"><img src="assets/gnn.jpg" width="1440" height="900" loading="lazy" alt="Cora GCN explorer showing a paper's two-hop citation neighbourhood graph, the predicted topic with class probabilities, and an edge-ablation note."></figure>
+        <figure class="shot"><img src="assets/gnn.jpg" width="1440" height="900" loading="lazy" alt="GraphMind explorer showing a paper's two-hop citation neighbourhood graph, the predicted topic with class probabilities, and an edge-ablation note."></figure>
         <div class="project-body">
           <p class="eyebrow">Graph neural networks · node classification</p>
-          <h3 class="project-title" id="gnn-title">Topic classification on the Cora citation graph</h3>
+          <h3 class="project-title" id="gnn-title">GraphMind: topic classification on the Cora citation graph</h3>
           <p class="project-lede">A two-layer graph convolutional network labels 2,708 papers with one of seven topics, using each paper's word features and its citation links. The model runs in ONNX Runtime behind FastAPI.</p>
           <dl class="metrics">
             <div><dt>Test accuracy</dt><dd>0.792</dd><span class="tag tag-live">re-evaluated</span></div>
@@ -96,16 +96,16 @@
             </div>
           </details>
           <p class="stack-line">PyTorch Geometric · ONNX Runtime · FastAPI · vanilla JS / SVG</p>
-          <p class="links"><a class="btn btn-sm" href="https://github.com/anshaiml369/cora-gcn-explorer">Code</a><span class="badge">Live demo: not deployed yet</span></p>
+          <p class="links"><a class="btn btn-sm btn-primary" href="https://graphmind-n10l.onrender.com/">Live demo</a><a class="btn btn-sm" href="https://github.com/anshaiml369/graphmind">Code</a><span class="badge">Free hosting: the first visit can take about a minute to wake the server</span></p>
         </div>
       </article>
 
       <!-- 2 · Emotion -->
       <article class="project" id="emotion" aria-labelledby="emotion-title">
-        <figure class="shot"><img src="assets/emotion.jpg" width="1440" height="900" loading="lazy" alt="Text emotion classifier showing the sentence “I feel so alone and hopeless today” predicted as sadness with a probability distribution over six labels."></figure>
+        <figure class="shot"><img src="assets/emotion.jpg" width="1440" height="900" loading="lazy" alt="Moodalyx showing the sentence “I feel so alone and hopeless today” predicted as sadness with a probability distribution over six labels."></figure>
         <div class="project-body">
           <p class="eyebrow">Natural language processing · recurrent networks</p>
-          <h3 class="project-title" id="emotion-title">Emotion-label prediction with a bidirectional GRU</h3>
+          <h3 class="project-title" id="emotion-title">Moodalyx: emotion-label prediction with a bidirectional GRU</h3>
           <p class="project-lede">A stacked BiGRU (3.45 M parameters) trained on dair-ai/emotion predicts one of six labels for short English text. It reports the full probability distribution and shows the cleaned tokens the model actually reads.</p>
           <dl class="metrics">
             <div><dt>Test accuracy</dt><dd>0.921</dd><span class="tag tag-live">re-evaluated</span></div>
@@ -125,16 +125,16 @@
             </div>
           </details>
           <p class="stack-line">TensorFlow / Keras · FastAPI · Hugging Face Datasets · vanilla JS</p>
-          <p class="links"><a class="btn btn-sm" href="https://github.com/anshaiml369/text-emotion-bigru">Code</a><span class="badge">Live demo: not deployed yet</span></p>
+          <p class="links"><a class="btn btn-sm" href="https://github.com/anshaiml369/moodalyx">Code</a><span class="badge">Live demo: not deployed yet</span></p>
         </div>
       </article>
 
       <!-- 3 · Credit -->
       <article class="project" id="credit" aria-labelledby="credit-title">
-        <figure class="shot"><img src="assets/credit.jpg" width="1440" height="900" loading="lazy" alt="Credit default model showing an application form, an estimated default probability of 3.5 percent against a 69.5 percent threshold, and the observed default rate for similar scores."></figure>
+        <figure class="shot"><img src="assets/credit.jpg" width="1440" height="900" loading="lazy" alt="CreditCompass showing an application form, an estimated default probability of 3.5 percent against a 69.5 percent threshold, and the observed default rate for similar scores."></figure>
         <div class="project-body">
           <p class="eyebrow">Tabular ML · probability calibration</p>
-          <h3 class="project-title" id="credit-title">Calibrated loan-default probability with XGBoost</h3>
+          <h3 class="project-title" id="credit-title">CreditCompass: calibrated loan-default probability with XGBoost</h3>
           <p class="project-lede">An XGBoost pipeline, tuned by randomized search and wrapped in sigmoid calibration, estimates default probability from 11 application features. Each estimate is shown next to the default rate actually observed among held-out applicants with similar scores.</p>
           <dl class="metrics">
             <div><dt>ROC-AUC</dt><dd>0.953</dd><span class="tag tag-live">re-evaluated</span></div>
@@ -154,16 +154,16 @@
             </div>
           </details>
           <p class="stack-line">scikit-learn · XGBoost · FastAPI · vanilla JS / SVG</p>
-          <p class="links"><a class="btn btn-sm" href="https://github.com/anshaiml369/credit-default-xgboost">Code</a><span class="badge">Live demo: not deployed yet</span></p>
+          <p class="links"><a class="btn btn-sm" href="https://github.com/anshaiml369/creditcompass">Code</a><span class="badge">Live demo: not deployed yet</span></p>
         </div>
       </article>
 
       <!-- 4 · Multi-agent -->
       <article class="project" id="agents" aria-labelledby="agents-title">
-        <figure class="shot"><img src="assets/multiagent.jpg" width="1440" height="900" loading="lazy" alt="Multi-agent research workbench in dark mode, showing four completed pipeline stages with timings, a generated research report on CRISPR gene editing, and measured token usage."></figure>
+        <figure class="shot"><img src="assets/multiagent.jpg" width="1440" height="842" loading="lazy" alt="Scholaryx multi-agent research workbench in dark mode, showing four completed pipeline stages with timings, a generated research report on CRISPR gene editing, and measured token usage."></figure>
         <div class="project-body">
           <p class="eyebrow">Agentic AI · tool-using LLM agents</p>
-          <h3 class="project-title" id="agents-title">Sequential multi-agent research pipeline</h3>
+          <h3 class="project-title" id="agents-title">Scholaryx: a sequential multi-agent research pipeline</h3>
           <p class="project-lede">A search agent (Tavily), a reader agent (web scraping), a writer chain and a critic chain turn a topic into a structured report with a self-critique. The workbench shows each stage live, along with the measured cost.</p>
           <dl class="metrics">
             <div><dt>End-to-end run</dt><dd>27–32 s</dd><span class="tag tag-run">measured</span></div>
@@ -183,16 +183,16 @@
             </div>
           </details>
           <p class="stack-line">LangChain · OpenAI gpt-4o-mini · Tavily · FastAPI · vanilla JS</p>
-          <p class="links"><a class="btn btn-sm" href="https://github.com/anshaiml369/multi-agent-research-workbench">Code</a><span class="badge">Live demo: not deployed yet</span></p>
+          <p class="links"><a class="btn btn-sm" href="https://github.com/anshaiml369/scholaryx">Code</a><span class="badge">Live demo: not deployed yet</span></p>
         </div>
       </article>
 
       <!-- 5 · Video RAG -->
       <article class="project" id="video" aria-labelledby="video-title">
-        <figure class="shot"><img src="assets/video.jpg" width="1440" height="900" loading="lazy" alt="AI video assistant studio with a YouTube video preview, source and language controls, and six completed processing stages from audio extraction to indexing."></figure>
+        <figure class="shot"><img src="assets/video.jpg" width="1440" height="842" loading="lazy" alt="Verbalyx studio with a YouTube video preview, source and language controls, and six completed processing stages from audio extraction to indexing."></figure>
         <div class="project-body">
           <p class="eyebrow">Speech recognition · retrieval-augmented generation</p>
-          <h3 class="project-title" id="video-title">Question answering over what is said in a video</h3>
+          <h3 class="project-title" id="video-title">Verbalyx: question answering over what is said in a video</h3>
           <p class="project-lede">Audio from a YouTube link or an uploaded file is transcribed (Whisper, or Sarvam for Hinglish), summarised by an LLM, and indexed in Chroma. Each answer is shown next to the transcript passages it was given.</p>
           <dl class="metrics">
             <div><dt>Whisper errors, 40 s test clip</dt><dd>1 / ≈110 words</dd><span class="tag tag-run">measured</span></div>
@@ -212,7 +212,7 @@
             </div>
           </details>
           <p class="stack-line">Whisper · Sarvam · LangChain · Mistral · Chroma · MiniLM embeddings · FastAPI</p>
-          <p class="links"><a class="btn btn-sm" href="https://github.com/anshaiml369/ai-video-assistant-rag">Code</a><span class="badge">Live demo: not deployed yet</span></p>
+          <p class="links"><a class="btn btn-sm" href="https://github.com/anshaiml369/verbalyx">Code</a><span class="badge">Live demo: not deployed yet</span></p>
         </div>
       </article>
     </div>
