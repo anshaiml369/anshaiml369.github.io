@@ -1,29 +1,37 @@
-# Ansh Agrawal — AI/ML project portfolio
+# Ansh Agrawal — AI/ML engineering portfolio
 
-Source for **https://anshaiml369.github.io/**, a static landing page (HTML, CSS and a little vanilla JavaScript)
-served by GitHub Pages. It summarises five projects and links to each one's repository:
+Source for **https://anshaiml369.github.io/**: a static site (HTML, CSS and vanilla JavaScript, no build step)
+served by GitHub Pages. It presents five AI/ML projects, each with a case study, evaluation results labelled
+by provenance, and a live or recorded demonstration.
 
-| Project | Repository |
-|---|---|
-| GraphMind: topic classification on the Cora citation graph (GCN) | [graphmind](https://github.com/anshaiml369/graphmind) · [live demo](https://graphmind-n10l.onrender.com/) |
-| Moodalyx: emotion-label prediction with a bidirectional GRU | [moodalyx](https://github.com/anshaiml369/moodalyx) · [live demo](https://moodalyx.onrender.com/) |
-| CreditCompass: calibrated loan-default probability with XGBoost | [creditcompass](https://github.com/anshaiml369/creditcompass) · [live demo](https://creditcompass-h0m5.onrender.com/) |
-| Scholaryx: a sequential multi-agent research pipeline | [scholaryx](https://github.com/anshaiml369/scholaryx) · [live demo](https://scholaryx.onrender.com/) |
-| Verbalyx: question answering over what is said in a video (RAG) | [verbalyx](https://github.com/anshaiml369/verbalyx) |
+| Project | Live demo | Case study |
+|---|---|---|
+| GraphMind — research-topic classification with a graph neural network | [graphmind-n10l.onrender.com](https://graphmind-n10l.onrender.com/) | [projects/graphmind.html](projects/graphmind.html) |
+| Scholaryx — sequential multi-agent research pipeline | [scholaryx.onrender.com](https://scholaryx.onrender.com/) (usage-limited) | [projects/scholaryx.html](projects/scholaryx.html) |
+| Moodalyx — emotion-label prediction from short English text | [moodalyx.onrender.com](https://moodalyx.onrender.com/) | [projects/moodalyx.html](projects/moodalyx.html) |
+| CreditCompass — calibrated loan-default probability with XGBoost | [creditcompass-h0m5.onrender.com](https://creditcompass-h0m5.onrender.com/) | [projects/creditcompass.html](projects/creditcompass.html) |
+| Verbalyx — question answering over what is said in a video | not hosted (recorded demo) | [projects/verbalyx.html](projects/verbalyx.html) |
 
-Each project began from a public YouTube tutorial and was extended with a research interface, re-evaluation,
-error analysis and documented limitations. Every metric on the page is labelled with its source.
+Source code for the five projects is available on request.
 
 ## Files
 
 ```
-index.html        the page
-css/core.css      shared design system (same as in the project repositories)
-css/site.css      page-specific styles
-js/core.js        shared helpers (mobile navigation)
-assets/*.jpg      screenshots of each project's interface, taken from real runs
-.nojekyll         serve files as-is (no Jekyll processing)
+index.html            home page
+projects/*.html       five case studies
+404.html              not-found page
+css/main.css          design system and components
+js/main.js            navigation, click-to-load videos, hero canvas (the site works without it)
+assets/fonts/         IBM Plex Sans and Mono (SIL Open Font License, see OFL.txt)
+assets/viz/           project diagrams generated from real project data
+assets/data/          hero graph: real Cora citation subgraph
+assets/posters/       frames taken from the demo recordings
+recordings/           demo recordings (MP4, no audio)
+.nojekyll             serve files as-is
 ```
+
+The diagrams in `assets/viz/` and `assets/data/hero-graph.json` are generated from data returned by the
+deployed applications and their evaluation files; no values are invented.
 
 ## Preview locally
 
