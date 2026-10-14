@@ -1,12 +1,11 @@
-# Keeps the five Render demos awake during Japan working hours on weekdays.
-# Render's free plan sleeps a service after 15 minutes without traffic and allows 750 running hours a month
-# per workspace, shared by all services. This window (≈5 h/day × 5 services × ≤23 weekdays ≈ 600 h) stays
-# inside that limit; a 24/7 pinger would exhaust it and get every demo suspended for the rest of the month.
+# Keeps the five Hugging Face Space demos awake around the clock.
+# Spaces on the cpu-basic hardware go to sleep after 48 hours without a visit; a visit every 6 hours keeps
+# them running, and there is no monthly hours limit to exhaust. The old Render deployments remain as backups.
 name: Keep project demos awake
 
 on:
   schedule:
-    - cron: "*/10 0-4 * * 1-5"   # every 10 minutes, 00:00–04:50 UTC = 09:00–13:50 JST, Monday–Friday
+    - cron: "17 */6 * * *"       # every 6 hours, every day
   workflow_dispatch: {}          # manual run from the Actions tab
 
 permissions: {}
@@ -18,7 +17,7 @@ concurrency:
 jobs:
   ping:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Ping each demo (up to 3 attempts; fails, and GitHub emails you, if one stays down)
         run: |
@@ -28,15 +27,15 @@ jobs:
             for attempt in 1 2 3; do
               code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 120 "$url" || echo 000)
               if [ "$code" = "200" ]; then ok=1; break; fi
-              sleep 15
+              sleep 30
             done
             echo "$name: HTTP $code (attempts: $attempt)"
             [ "$ok" = 1 ] || down=1
           done <<'LIST'
-          GraphMind https://graphmind-n10l.onrender.com/health
-          CreditCompass https://creditcompass-h0m5.onrender.com/openapi.json
-          Moodalyx https://moodalyx.onrender.com/health
-          Scholaryx https://scholaryx.onrender.com/api/health
-          Warehouse https://warehouse-amr-fleet.onrender.com/
+          GraphMind https://anshag-graphmind.hf.space/health
+          CreditCompass https://anshag-creditcompass.hf.space/openapi.json
+          Moodalyx https://anshag-moodalyx.hf.space/health
+          Scholaryx https://anshag-scholaryx.hf.space/api/health
+          Warehouse https://anshag-warehouse.hf.space/api/state
           LIST
           exit $down

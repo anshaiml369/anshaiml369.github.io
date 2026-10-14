@@ -6,10 +6,10 @@ by provenance, and a live or recorded demonstration.
 
 | Project | Live demo | Case study |
 |---|---|---|
-| GraphMind — research-topic classification with a graph neural network | [graphmind-n10l.onrender.com](https://graphmind-n10l.onrender.com/) | [projects/graphmind.html](projects/graphmind.html) |
-| Scholaryx — sequential multi-agent research pipeline | [scholaryx.onrender.com](https://scholaryx.onrender.com/) (usage-limited) | [projects/scholaryx.html](projects/scholaryx.html) |
-| Moodalyx — emotion-label prediction from short English text | [moodalyx.onrender.com](https://moodalyx.onrender.com/) | [projects/moodalyx.html](projects/moodalyx.html) |
-| CreditCompass — calibrated loan-default probability with XGBoost | [creditcompass-h0m5.onrender.com](https://creditcompass-h0m5.onrender.com/) | [projects/creditcompass.html](projects/creditcompass.html) |
+| GraphMind — research-topic classification with a graph neural network | [anshag-graphmind.hf.space](https://anshag-graphmind.hf.space/) | [projects/graphmind.html](projects/graphmind.html) |
+| Scholaryx — sequential multi-agent research pipeline | [anshag-scholaryx.hf.space](https://anshag-scholaryx.hf.space/) (usage-limited) | [projects/scholaryx.html](projects/scholaryx.html) |
+| Moodalyx — emotion-label prediction from short English text | [anshag-moodalyx.hf.space](https://anshag-moodalyx.hf.space/) | [projects/moodalyx.html](projects/moodalyx.html) |
+| CreditCompass — calibrated loan-default probability with XGBoost | [anshag-creditcompass.hf.space](https://anshag-creditcompass.hf.space/) | [projects/creditcompass.html](projects/creditcompass.html) |
 | Verbalyx — question answering over what is said in a video | not hosted (recorded demo) | [projects/verbalyx.html](projects/verbalyx.html) |
 
 Source code for the five projects is available on request.
