@@ -10,7 +10,7 @@ by provenance, and a live or recorded demonstration.
 | Scholaryx — sequential multi-agent research pipeline | [anshaiml369.github.io/scholaryx](https://anshaiml369.github.io/scholaryx/) (usage-limited) | [projects/scholaryx.html](projects/scholaryx.html) |
 | Moodalyx — emotion-label prediction from short English text | [anshaiml369.github.io/moodalyx](https://anshaiml369.github.io/moodalyx/) | [projects/moodalyx.html](projects/moodalyx.html) |
 | CreditCompass — calibrated loan-default probability with XGBoost | [anshaiml369.github.io/creditcompass](https://anshaiml369.github.io/creditcompass/) | [projects/creditcompass.html](projects/creditcompass.html) |
-| Verbalyx — question answering over what is said in a video | not hosted (recorded demo) | [projects/verbalyx.html](projects/verbalyx.html) |
+| Verbalyx — question answering over what is said in a video | [anshaiml369.github.io/verbalyx](https://anshaiml369.github.io/verbalyx/) (usage-limited) | [projects/verbalyx.html](projects/verbalyx.html) |
 
 Source code for the five projects is available on request.
 

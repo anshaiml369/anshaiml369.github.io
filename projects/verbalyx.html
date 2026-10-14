@@ -9,7 +9,7 @@
   <meta name="theme-color" content="#0a0c0f">
   <meta property="og:type" content="article">
   <meta property="og:title" content="Verbalyx — question answering over what is said in a video">
-  <meta property="og:description" content="Speech-to-text, LLM summarisation and retrieval-augmented question answering with visible evidence; a recorded run and documented limitations.">
+  <meta property="og:description" content="Speech-to-text, LLM summarisation and retrieval-augmented question answering with visible evidence; a live demo, a recorded run and documented limitations.">
   <meta property="og:url" content="https://anshaiml369.github.io/projects/verbalyx.html">
   <meta property="og:image" content="https://anshaiml369.github.io/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -54,9 +54,9 @@
           <div class="metric"><dt>Peak memory, Whisper “small”</dt><dd>1.45 GB</dd><dd class="src"><span class="tag tag-live">measured locally</span></dd></div>
         </dl>
         <div class="btn-row">
-          <span class="btn" aria-disabled="true">Not hosted</span>
-          <a class="btn btn-primary" href="#demo">Watch demo</a>
-          <span class="note-inline">Code on request · too large for free hosting, so the demo is recorded</span>
+          <a class="btn btn-primary" href="https://anshaiml369.github.io/verbalyx/" target="_blank" rel="noopener">Live demo</a>
+          <a class="btn" href="#demo">Watch demo</a>
+          <span class="note-inline">Code on request · live runs use paid APIs: 10 a day, 2 per visitor per hour, uploads up to 10 minutes (no YouTube links)</span>
         </div>
       </div>
     </section>
@@ -177,7 +177,7 @@
         <section class="cs-section" id="deployment">
           <h2><span class="n">10</span>Deployment and source code</h2>
           <ul>
-            <li><strong>Not hosted.</strong> With Whisper “small” the process peaked at about 1.45 GB of memory; even with Whisper “tiny” it reached 619 MB during transcription — both above the 512 MB of free hosting. A paid instance would work but was not chosen, so the project is shown by its recording.</li>
+            <li><strong>Live demo:</strong> <a href="https://anshaiml369.github.io/verbalyx/" target="_blank" rel="noopener">anshaiml369.github.io/verbalyx</a> — Hugging Face Space (Docker, 2 vCPU, 16 GB), Whisper “small”. Locally the process peaked at about 1.45 GB of memory, too much for 512 MB free hosting. On the Space, the 88-second synthetic meeting was processed in 55 s and the launch-date question answered correctly (14 October 2026). Public limits: 10 analyses a day, 2 per visitor per hour, 10 questions per analysis, uploads up to 10 minutes and 25 MB; YouTube links are disabled.</li>
             <li><strong>External services:</strong> Mistral (and Sarvam for Hinglish) via server-side API keys.</li>
             <li><strong>Source code:</strong> available on request.</li>
           </ul>
