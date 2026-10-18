@@ -1,0 +1,82 @@
+{
+ "captured": "2026-10-17",
+ "moodalyx": [
+  {
+   "text": "i feel so sad and lonely tonight",
+   "label": "sadness",
+   "confidence": 0.9994,
+   "probs": {
+    "sadness": 0.9994,
+    "joy": 0.0001,
+    "love": 0.0,
+    "anger": 0.0004,
+    "fear": 0.0001,
+    "surprise": 0.0
+   }
+  },
+  {
+   "text": "i am furious at how rude he was",
+   "label": "anger",
+   "confidence": 0.9959,
+   "probs": {
+    "sadness": 0.0024,
+    "joy": 0.0001,
+    "love": 0.0001,
+    "anger": 0.9959,
+    "fear": 0.0013,
+    "surprise": 0.0002
+   }
+  },
+  {
+   "text": "I am so happy I got the internship offer today",
+   "label": "fear",
+   "confidence": 0.7941,
+   "probs": {
+    "sadness": 0.0902,
+    "joy": 0.0633,
+    "love": 0.0025,
+    "anger": 0.0459,
+    "fear": 0.7941,
+    "surprise": 0.004
+   }
+  }
+ ],
+ "creditcompass": [
+  {
+   "input": {
+    "person_age": 25,
+    "person_income": 40000,
+    "person_home_ownership": "RENT",
+    "person_emp_length": 3,
+    "loan_intent": "EDUCATION",
+    "loan_grade": "B",
+    "loan_amnt": 8000,
+    "loan_int_rate": 11,
+    "loan_percent_income": 0.2,
+    "cb_person_default_on_file": "N",
+    "cb_person_cred_hist_length": 4
+   },
+   "probability": 0.0209,
+   "threshold": 0.6952,
+   "result": "Low Risk"
+  },
+  {
+   "input": {
+    "person_age": 23,
+    "person_income": 18000,
+    "person_home_ownership": "RENT",
+    "person_emp_length": 1,
+    "loan_intent": "MEDICAL",
+    "loan_grade": "D",
+    "loan_amnt": 9000,
+    "loan_int_rate": 16.5,
+    "loan_percent_income": 0.5,
+    "cb_person_default_on_file": "Y",
+    "cb_person_cred_hist_length": 2
+   },
+   "probability": 0.948,
+   "threshold": 0.6952,
+   "result": "High Risk"
+  }
+ ]
+}
