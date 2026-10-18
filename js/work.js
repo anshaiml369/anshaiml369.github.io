@@ -70,7 +70,7 @@
   $("#work-list").addEventListener("click", (e) => {
     const v = e.target.closest("[data-video]"); if (!v) return;
     const s = D.systems.find((x) => x.id === v.dataset.video);
-    B.openMedia(`<video src="recordings/${s.id}.mp4" poster="assets/posters/${s.id}.jpg" controls playsinline></video>`, `${s.name} — recorded run of the real application.`);
+    B.openMedia(`<video src="recordings/${s.id}.mp4?v=2" poster="assets/posters/${s.id}.jpg?v=2" controls playsinline></video>`, `${s.name} — recorded run of the real application.`);
   });
 
   /* GraphMind — the real neighbourhood; message passing on demand */
