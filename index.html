@@ -1,28 +1,457 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ansh Agrawal</title>
-<style>
-:root{--bg:#ffffff;--fg:#222222;--link:#0b57d0}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#111111;--fg:#e6e6e6;--link:#8ab4ff}}
-:root[data-theme="dark"]{--bg:#111111;--fg:#e6e6e6;--link:#8ab4ff}
-body{margin:0 auto;max-width:640px;padding:40px 16px;font:16px/1.6 system-ui,sans-serif;background:var(--bg);color:var(--fg)}
-a{color:var(--link)}h1{font-size:24px;margin:0 0 4px}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ansh Agrawal — AI/ML Engineering Portfolio</title>
+  <meta name="description" content="Ansh Agrawal, B.Tech AI & ML student. Five AI/ML systems — a graph neural network, a multi-agent research pipeline, a text-emotion classifier, a calibrated credit-risk model and a video RAG assistant — each with a live or recorded demo, an architecture write-up and evaluation on held-out data.">
+  <link rel="canonical" href="https://anshaiml369.github.io/">
+  <meta name="theme-color" content="#0a0c0f">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ansh Agrawal">
+  <meta property="og:title" content="Ansh Agrawal — Building AI systems, and checking that they work">
+  <meta property="og:description" content="Five AI/ML systems with live demos, recorded demonstrations, architecture case studies and held-out evaluation.">
+  <meta property="og:url" content="https://anshaiml369.github.io/">
+  <meta property="og:image" content="https://anshaiml369.github.io/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/ibm-plex-sans-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/main.css">
+  <script src="js/main.js" defer></script>
 </head>
-<body>
-<h1>Ansh Agrawal</h1>
-<p>B.Tech student, AI &amp; ML.</p>
-<h2 style="font-size:18px">Demos</h2>
-<ul>
-<li><a href="/graphmind/">GraphMind</a></li>
-<li><a href="/scholaryx/">Scholaryx</a></li>
-<li><a href="/moodalyx/">Moodalyx</a></li>
-<li><a href="/creditcompass/">CreditCompass</a></li>
-<li><a href="/verbalyx/">Verbalyx</a></li>
-</ul>
-<p>Contact: <a href="mailto:ansh.aiml369@gmail.com">ansh.aiml369@gmail.com</a></p>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="#top"><span class="brand-mark" aria-hidden="true">AA</span><span>Ansh Agrawal</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#certifications">Certifications</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Hero -->
+    <section class="hero grid-bg" id="home" aria-labelledby="hero-title">
+      <canvas class="hero-canvas" data-src="assets/data/hero-graph.json" aria-hidden="true"></canvas>
+      <div class="hero-fade" aria-hidden="true"></div>
+      <div class="container">
+        <div class="hero-content">
+          <span class="eyebrow">AI/ML engineering · deep learning · LLM systems</span>
+          <h1 id="hero-title">Building AI systems — <span class="accent">and checking that they work.</span></h1>
+          <p class="lede">I’m Ansh Agrawal, a second-year B.Tech AI &amp; ML student at Universal AI University. I build machine-learning, deep-learning and LLM applications — a graph neural network, calibrated classifiers, an agent pipeline and a retrieval system — and evaluate each one on held-out data before describing it.</p>
+          <div class="btn-row">
+            <a class="btn btn-primary" href="#projects">Explore projects
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg></a>
+            <a class="btn" href="https://github.com/anshaiml369" target="_blank" rel="noopener">GitHub
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          </div>
+          <ul class="hero-meta" aria-label="At a glance">
+            <li><strong>5</strong> projects with case studies</li>
+            <li><strong>4</strong> live demos</li>
+            <li><strong>5</strong> recorded demonstrations</li>
+          </ul>
+        </div>
+      </div>
+      <p class="hero-caption">Background: 200 papers from the Cora citation graph, the data GraphMind classifies.</p>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="container about-grid">
+        <div>
+          <span class="eyebrow">About</span>
+          <h2 id="about-title" class="section-title" style="font-size:var(--fs-2xl);margin:var(--s-3) 0 var(--s-5)">Applied ML, end to end</h2>
+          <div class="about-text">
+            <p>I work across the whole of an applied ML project: preparing data, training or orchestrating a model, serving it behind a small API, and building an interface someone else can actually use.</p>
+            <p>The step I care about most is evaluation — scoring the saved model rather than trusting a notebook printout, saying where every number comes from, and writing down what the system gets wrong. My current interests are graph learning, agentic LLM workflows and retrieval-augmented generation.</p>
+          </div>
+          <div class="callout" style="margin-top:var(--s-5)">
+            <strong>How these projects were built</strong>
+            Each of the five projects started from a public tutorial. Each was then extended with a research-style interface, a re-evaluation of the shipped model or pipeline, deployment, and a written account of its limitations. Every case study lists what was added. The extensions were developed with the help of AI coding assistants; the evaluations and results were run and checked on the real systems.
+          </div>
+        </div>
+        <aside class="panel" aria-labelledby="facts-title">
+          <h3 id="facts-title">At a glance</h3>
+          <dl class="facts">
+            <div><dt>Study</dt><dd>B.Tech in AI &amp; ML, Universal AI University (2025–2029)</dd></div>
+            <div><dt>Focus</dt><dd>Deep learning, LLM agents, retrieval-augmented generation, model evaluation</dd></div>
+            <div><dt>Stack</dt><dd>Python, PyTorch Geometric, TensorFlow/Keras, scikit-learn, XGBoost, LangChain, FastAPI</dd></div>
+            <div><dt>Recent</dt><dd>1st of 24 teams, UAI internal hackathon for Smart India Hackathon 2026 (R&amp;D)</dd></div>
+          </dl>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section" id="projects" aria-labelledby="projects-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Projects</span>
+          <h2 id="projects-title">Five systems, each with evidence</h2>
+          <p>Every card links to a live demo or a recorded run and a full case study. Numbers carry a label showing where they come from — see <a href="#evaluation">how I evaluate</a>. Source code is available on request. Live demos are hosted on Hugging Face Spaces.</p>
+        </div>
+
+        <div class="projects">
+          <!-- GraphMind -->
+          <article class="project" aria-labelledby="p-graphmind">
+            <div class="project-visual"><img src="assets/viz/graphmind.svg" width="640" height="400" loading="lazy" alt="Real citation neighbourhood of Cora paper 1708: 60 papers and 79 citation links coloured by true research topic, with dashed rings on test papers the GCN misclassifies."></div>
+            <div class="project-body">
+              <div class="project-kicker"><span class="project-index">01</span><span class="tag tag-live">Live demo</span></div>
+              <h3 id="p-graphmind">GraphMind <span>Research-topic classification with a graph neural network</span></h3>
+              <p>A two-layer graph convolutional network assigns each of 2,708 papers in the Cora citation graph to one of seven topics, combining a paper’s own word features with those of the papers it cites or is cited by.</p>
+              <dl class="metrics">
+                <div class="metric"><dt>Test accuracy (1,000 papers)</dt><dd>0.792</dd><dd class="src"><span class="tag tag-reeval">re-evaluated</span></dd></div>
+                <div class="metric"><dt>Same model, citations removed</dt><dd>0.678</dd><dd class="src"><span class="tag tag-reeval">ablation</span></dd></div>
+              </dl>
+              <ul class="chips" aria-label="Technologies"><li>PyTorch Geometric</li><li>ONNX Runtime</li><li>FastAPI</li><li>JavaScript / SVG</li></ul>
+              <div class="btn-row project-links">
+                <a class="btn btn-primary" href="https://anshaiml369.github.io/graphmind/" target="_blank" rel="noopener">Live demo</a>
+                <a class="btn" href="#demo-graphmind">Watch demo</a>
+                <a class="btn" href="projects/graphmind.html">Case study</a>
+                <span class="note-inline">Code on request</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Scholaryx -->
+          <article class="project" aria-labelledby="p-scholaryx">
+            <div class="project-visual"><img src="assets/viz/scholaryx.svg" width="640" height="400" loading="lazy" alt="Scholaryx pipeline of four sequential agents with stage times measured in one live run: search 8.5 s, reader 10.8 s, writer 6.2 s, critic 2.4 s."></div>
+            <div class="project-body">
+              <div class="project-kicker"><span class="project-index">02</span><span class="tag tag-live">Live demo · usage-limited</span></div>
+              <h3 id="p-scholaryx">Scholaryx <span>A sequential multi-agent research pipeline</span></h3>
+              <p>A search agent, a reader agent, a writer chain and a critic chain turn a topic into a structured, sourced report with a self-critique. The public demo is rate-limited and its web scraper is protected against server-side request forgery.</p>
+              <dl class="metrics">
+                <div class="metric"><dt>End to end, two live runs</dt><dd>43 s / 28 s</dd><dd class="src"><span class="tag tag-live">measured</span></dd></div>
+                <div class="metric"><dt>OpenAI cost per run</dt><dd>$0.0018</dd><dd class="src"><span class="tag tag-live">measured</span></dd></div>
+                <div class="metric"><dt>Cited URLs found in sources</dt><dd>5 / 5</dd><dd class="src"><span class="tag tag-live">both runs</span></dd></div>
+              </dl>
+              <ul class="chips" aria-label="Technologies"><li>LangChain</li><li>OpenAI gpt-4o-mini</li><li>Tavily</li><li>FastAPI</li></ul>
+              <div class="btn-row project-links">
+                <a class="btn btn-primary" href="https://anshaiml369.github.io/scholaryx/" target="_blank" rel="noopener">Live demo</a>
+                <a class="btn" href="#demo-scholaryx">Watch demo</a>
+                <a class="btn" href="projects/scholaryx.html">Case study</a>
+                <span class="note-inline">Code on request</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Moodalyx -->
+          <article class="project" aria-labelledby="p-moodalyx">
+            <div class="project-visual"><img src="assets/viz/moodalyx.svg" width="640" height="400" loading="lazy" alt="Moodalyx live prediction for “I was shocked and completely surprised by the unexpected gift!”: surprise 97.6 percent, fear 1.4, joy 0.8, anger 0.2, sadness and love below 0.1 percent."></div>
+            <div class="project-body">
+              <div class="project-kicker"><span class="project-index">03</span><span class="tag tag-live">Live demo</span></div>
+              <h3 id="p-moodalyx">Moodalyx <span>Emotion-label prediction from short English text</span></h3>
+              <p>A bidirectional GRU assigns one of six labels — sadness, joy, love, anger, fear or surprise — to a sentence and returns the full probability distribution, so uncertain predictions are visible.</p>
+              <dl class="metrics">
+                <div class="metric"><dt>Accuracy (2,000 test sentences)</dt><dd>0.921</dd><dd class="src"><span class="tag tag-reeval">re-evaluated</span></dd></div>
+                <div class="metric"><dt>Macro-F1</dt><dd>0.880</dd><dd class="src"><span class="tag tag-caveat">optimistic: see case study</span></dd></div>
+              </dl>
+              <ul class="chips" aria-label="Technologies"><li>TensorFlow / Keras</li><li>Bidirectional GRU</li><li>FastAPI</li></ul>
+              <div class="btn-row project-links">
+                <a class="btn btn-primary" href="https://anshaiml369.github.io/moodalyx/" target="_blank" rel="noopener">Live demo</a>
+                <a class="btn" href="#demo-moodalyx">Watch demo</a>
+                <a class="btn" href="projects/moodalyx.html">Case study</a>
+                <span class="note-inline">Code on request</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- CreditCompass -->
+          <article class="project" aria-labelledby="p-creditcompass">
+            <div class="project-visual"><img src="assets/viz/creditcompass.svg" width="640" height="400" loading="lazy" alt="CreditCompass calibration curve on 6,305 held-out applications: observed default rate against mean predicted probability in ten bins, next to the diagonal for perfect calibration. ROC-AUC 0.953, PR-AUC 0.910, Brier 0.052."></div>
+            <div class="project-body">
+              <div class="project-kicker"><span class="project-index">04</span><span class="tag tag-live">Live demo</span></div>
+              <h3 id="p-creditcompass">CreditCompass <span>Calibrated loan-default probability with XGBoost</span></h3>
+              <p>A tuned XGBoost pipeline wrapped in sigmoid calibration estimates the probability that a loan defaults, and shows the default rate actually observed among held-out applicants with similar scores. A research demonstration, not a lending tool.</p>
+              <dl class="metrics">
+                <div class="metric"><dt>ROC-AUC (6,305 held out)</dt><dd>0.953</dd><dd class="src"><span class="tag tag-reeval">re-evaluated</span></dd></div>
+                <div class="metric"><dt>PR-AUC (21.6 % defaults)</dt><dd>0.910</dd><dd class="src"><span class="tag tag-reeval">re-evaluated</span></dd></div>
+                <div class="metric"><dt>Brier score</dt><dd>0.052</dd><dd class="src"><span class="tag tag-reeval">re-evaluated</span></dd></div>
+              </dl>
+              <ul class="chips" aria-label="Technologies"><li>scikit-learn</li><li>XGBoost</li><li>Probability calibration</li><li>FastAPI</li></ul>
+              <div class="btn-row project-links">
+                <a class="btn btn-primary" href="https://anshaiml369.github.io/creditcompass/" target="_blank" rel="noopener">Live demo</a>
+                <a class="btn" href="#demo-creditcompass">Watch demo</a>
+                <a class="btn" href="projects/creditcompass.html">Case study</a>
+                <span class="note-inline">Code on request</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- Verbalyx -->
+          <article class="project" aria-labelledby="p-verbalyx">
+            <div class="project-visual"><img src="assets/viz/verbalyx.svg" width="640" height="400" loading="lazy" alt="Verbalyx pipeline with stage times from one local run on an 88-second synthetic meeting: audio 0.4 s, transcription 27.1 s, analysis 9.9 s, indexing 8.0 s, then question answering over the top four retrieved chunks."></div>
+            <div class="project-body">
+              <div class="project-kicker"><span class="project-index">05</span><span class="tag tag-live">Live demo · usage-limited</span></div>
+              <h3 id="p-verbalyx">Verbalyx <span>Question answering over what is said in a video</span></h3>
+              <p>Extracts a video’s audio, transcribes it with Whisper, summarises it with Mistral, and answers questions from the four most relevant transcript chunks — showing that evidence next to every answer.</p>
+              <dl class="metrics">
+                <div class="metric"><dt>Word error rate, one 88 s synthetic meeting</dt><dd>4.5 %</dd><dd class="src"><span class="tag tag-live">single run</span></dd></div>
+                <div class="metric"><dt>Questions answered correctly</dt><dd>3 / 3</dd><dd class="src"><span class="tag tag-caveat">one attribution error</span></dd></div>
+              </dl>
+              <ul class="chips" aria-label="Technologies"><li>Whisper</li><li>LangChain</li><li>Mistral</li><li>Chroma</li><li>FastAPI</li></ul>
+              <div class="btn-row project-links">
+                <a class="btn btn-primary" href="https://anshaiml369.github.io/verbalyx/" target="_blank" rel="noopener">Live demo</a>
+                <a class="btn" href="#demo-verbalyx">Watch demo</a>
+                <a class="btn" href="projects/verbalyx.html">Case study</a>
+                <span class="note-inline">Code on request · live runs use paid APIs: 10 a day, 2 per visitor per hour, uploads up to 10 minutes</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Demo videos -->
+    <section class="section" id="demos" aria-labelledby="demos-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Recorded demonstrations</span>
+          <h2 id="demos-title">Watch each system run</h2>
+          <p>Screen recordings of real runs, each with a title and end card stating what was measured. They have no sound; a video loads only when you press play.</p>
+        </div>
+        <div class="demos">
+          <article class="demo" id="demo-graphmind" aria-labelledby="d-graphmind">
+            <div class="video-frame">
+              <button class="video-play" type="button" data-src="recordings/graphmind.mp4" data-poster="assets/posters/graphmind.jpg" data-label="GraphMind demo video">
+                <img src="assets/posters/graphmind.jpg" width="800" height="500" loading="lazy" alt="">
+                <span class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5v14l12-7z"/></svg></span>
+                <span class="duration">1:05</span>
+                <span class="sr-only">Play GraphMind demo, 1 minute 5 seconds</span>
+              </button>
+            </div>
+            <div class="demo-body">
+              <span class="tag tag-live">Recorded on the live site</span>
+              <h3 id="d-graphmind">GraphMind</h3>
+              <p>Classifies paper 1708 and its two-hop neighbourhood, opens a misclassified test paper, runs the edge experiment, and scrolls through the evaluation computed by the server.</p>
+            </div>
+          </article>
+
+          <article class="demo" id="demo-scholaryx" aria-labelledby="d-scholaryx">
+            <div class="video-frame">
+              <button class="video-play" type="button" data-src="recordings/scholaryx.mp4" data-poster="assets/posters/scholaryx.jpg" data-label="Scholaryx demo video">
+                <img src="assets/posters/scholaryx.jpg" width="800" height="500" loading="lazy" alt="">
+                <span class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5v14l12-7z"/></svg></span>
+                <span class="duration">1:16</span>
+                <span class="sr-only">Play Scholaryx demo, 1 minute 16 seconds</span>
+              </button>
+            </div>
+            <div class="demo-body">
+              <span class="tag tag-live">Recorded on the live site</span>
+              <h3 id="d-scholaryx">Scholaryx</h3>
+              <p>One real research run on “CRISPR gene editing” in real time: the four stages, the report, the critic’s score, the sources, and the measured tokens and cost.</p>
+            </div>
+          </article>
+
+          <article class="demo" id="demo-moodalyx" aria-labelledby="d-moodalyx">
+            <div class="video-frame">
+              <button class="video-play" type="button" data-src="recordings/moodalyx.mp4" data-poster="assets/posters/moodalyx.jpg" data-label="Moodalyx demo video">
+                <img src="assets/posters/moodalyx.jpg" width="800" height="500" loading="lazy" alt="">
+                <span class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5v14l12-7z"/></svg></span>
+                <span class="duration">1:07</span>
+                <span class="sr-only">Play Moodalyx demo, 1 minute 7 seconds</span>
+              </button>
+            </div>
+            <div class="demo-body">
+              <span class="tag tag-live">Recorded on the live site</span>
+              <h3 id="d-moodalyx">Moodalyx</h3>
+              <p>Four sentences with their full probability distributions — including a real error (a happy sentence labelled fear) and a factual sentence forced into an emotion — then the test-split evaluation.</p>
+            </div>
+          </article>
+
+          <article class="demo" id="demo-creditcompass" aria-labelledby="d-creditcompass">
+            <div class="video-frame">
+              <button class="video-play" type="button" data-src="recordings/creditcompass.mp4" data-poster="assets/posters/creditcompass.jpg" data-label="CreditCompass demo video">
+                <img src="assets/posters/creditcompass.jpg" width="800" height="500" loading="lazy" alt="">
+                <span class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5v14l12-7z"/></svg></span>
+                <span class="duration">1:05</span>
+                <span class="sr-only">Play CreditCompass demo, 1 minute 5 seconds</span>
+              </button>
+            </div>
+            <div class="demo-body">
+              <span class="tag tag-live">Recorded on the live site</span>
+              <h3 id="d-creditcompass">CreditCompass</h3>
+              <p>A typical application (3.5 %, low risk), a riskier one (94.8 %), an impossible input being rejected, the sensitivity tool, and the held-out evaluation.</p>
+            </div>
+          </article>
+
+          <article class="demo" id="demo-verbalyx" aria-labelledby="d-verbalyx">
+            <div class="video-frame">
+              <button class="video-play" type="button" data-src="recordings/verbalyx.mp4" data-poster="assets/posters/verbalyx.jpg" data-label="Verbalyx demo video">
+                <img src="assets/posters/verbalyx.jpg" width="800" height="500" loading="lazy" alt="">
+                <span class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5v14l12-7z"/></svg></span>
+                <span class="duration">2:28</span>
+                <span class="sr-only">Play Verbalyx demo, 2 minutes 28 seconds</span>
+              </button>
+            </div>
+            <div class="demo-body">
+              <span class="tag">Recorded locally · synthetic audio</span>
+              <h3 id="d-verbalyx">Verbalyx</h3>
+              <p>An 88-second synthetic meeting is transcribed, summarised and indexed; three questions are answered with retrieved evidence, including one about something never discussed.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Evaluation approach -->
+    <section class="section" id="evaluation" aria-labelledby="evaluation-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Method</span>
+          <h2 id="evaluation-title">How I evaluate</h2>
+          <p>A number is only useful if a reader can tell where it came from and what it leaves out.</p>
+        </div>
+        <div class="principles">
+          <div class="principle"><span class="num">01</span><h3>Score the shipped artifact</h3><p>Metrics are recomputed from the saved model files on the original held-out split, not copied from a single notebook run.</p></div>
+          <div class="principle"><span class="num">02</span><h3>Label the provenance</h3><p>Every figure is marked as re-evaluated, measured in a live run, or copied from notebook output.</p></div>
+          <div class="principle"><span class="num">03</span><h3>Compare against something</h3><p>A baseline or an ablation where one exists — a random forest without graph structure, the GCN without citation edges, logistic regression for credit risk.</p></div>
+          <div class="principle"><span class="num">04</span><h3>Write down the failures</h3><p>Data leakage, a checkpointing bug, a threshold chosen on the test set, and a speaker-attribution error are documented, including the ones not yet fixed.</p></div>
+        </div>
+        <div class="legend" aria-label="Label legend">
+          <span class="tag tag-reeval">re-evaluated</span> recomputed from the saved model
+          <span class="tag tag-live">measured</span> from a real run
+          <span class="tag tag-notebook">notebook</span> copied from saved notebook output
+          <span class="tag tag-caveat">caveat</span> read the limitation
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Technical skills</span>
+          <h2 id="skills-title">What the projects use</h2>
+          <p>Grouped by area, each linked to the project that demonstrates it.</p>
+        </div>
+        <div class="skills">
+          <div class="skill"><h3>Machine learning</h3><ul class="chips"><li>scikit-learn pipelines</li><li>XGBoost</li><li>Randomized search</li><li>Probability calibration</li><li>Threshold analysis</li><li>Permutation importance</li></ul><p class="used-in">Used in <a href="projects/creditcompass.html">CreditCompass</a></p></div>
+          <div class="skill"><h3>Deep learning</h3><ul class="chips"><li>PyTorch Geometric (GCN)</li><li>TensorFlow / Keras</li><li>Bidirectional GRU</li><li>ONNX export &amp; Runtime</li></ul><p class="used-in">Used in <a href="projects/graphmind.html">GraphMind</a>, <a href="projects/moodalyx.html">Moodalyx</a></p></div>
+          <div class="skill"><h3>NLP &amp; speech</h3><ul class="chips"><li>Text preprocessing</li><li>Tokenisation &amp; sequence models</li><li>Whisper speech recognition</li><li>Word error rate</li></ul><p class="used-in">Used in <a href="projects/moodalyx.html">Moodalyx</a>, <a href="projects/verbalyx.html">Verbalyx</a></p></div>
+          <div class="skill"><h3>LLMs &amp; agents</h3><ul class="chips"><li>LangChain agents &amp; chains</li><li>Tool calling</li><li>OpenAI API</li><li>Mistral API</li><li>Tavily search</li><li>Prompt design</li></ul><p class="used-in">Used in <a href="projects/scholaryx.html">Scholaryx</a>, <a href="projects/verbalyx.html">Verbalyx</a></p></div>
+          <div class="skill"><h3>Retrieval (RAG)</h3><ul class="chips"><li>Chunking</li><li>Sentence-transformer embeddings</li><li>Chroma vector store</li><li>Grounded prompting</li></ul><p class="used-in">Used in <a href="projects/verbalyx.html">Verbalyx</a></p></div>
+          <div class="skill"><h3>Evaluation</h3><ul class="chips"><li>Held-out re-evaluation</li><li>Macro-F1</li><li>ROC-AUC &amp; PR-AUC</li><li>Brier score &amp; calibration error</li><li>Ablation</li></ul><p class="used-in">Used in all five projects</p></div>
+          <div class="skill"><h3>Engineering &amp; deployment</h3><ul class="chips"><li>Python</li><li>FastAPI</li><li>HTML / CSS / JavaScript</li><li>Git &amp; GitHub</li><li>Hugging Face Spaces (Docker)</li><li>Render</li><li>GitHub Pages</li></ul><p class="used-in">Used in all five projects</p></div>
+          <div class="skill"><h3>Reliability &amp; security</h3><ul class="chips"><li>Input validation</li><li>Rate limiting</li><li>SSRF protection</li><li>Unit tests</li><li>Secret handling</li></ul><p class="used-in">Used in <a href="projects/scholaryx.html">Scholaryx</a>, <a href="projects/creditcompass.html">CreditCompass</a></p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="section" id="experience" aria-labelledby="experience-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Experience</span>
+          <h2 id="experience-title">Roles</h2>
+        </div>
+        <ol class="timeline">
+          <li>
+            <span class="when">Oct 2026 – present · part-time</span>
+            <h3>Industry Outreach Associate</h3>
+            <div class="org">AI ConnectX · Universal AI University</div>
+          </li>
+          <li>
+            <span class="when">May 2026 – Jul 2026 · remote</span>
+            <h3>Artificial Intelligence Intern</h3>
+            <div class="org">AI Cell, Universal AI University</div>
+            <p>Built a university-focused AI chatbot using Python, retrieval-augmented generation and LLM APIs to help users find university information.</p>
+          </li>
+          <li>
+            <span class="when">Oct 2025 – Mar 2026 · part-time</span>
+            <h3>Member, Training Vertical</h3>
+            <div class="org">AI Cell, Universal AI University</div>
+            <p>Prepared the event documentation for two AI Cell training events: “AI Tools for Hackathon” and “Build Your Own Calling AI Agent Tool”.</p>
+          </li>
+          <li>
+            <span class="when">Dec 2025</span>
+            <h3>Member, AI in Village – Smart Project</h3>
+            <div class="org">Light of Life Trust · Kushiwali, Karjat</div>
+            <p>Collected community feedback and information through online forms in Kushiwali and nearby villages to support data collection on local needs.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Achievements, certifications, education -->
+    <section class="section" id="certifications" aria-labelledby="certifications-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Achievements · certifications · education</span>
+          <h2 id="certifications-title">Credentials</h2>
+        </div>
+        <div class="creds">
+          <div class="cred cred-highlight">
+            <span class="kind">Achievement · Sep 2026</span>
+            <h3>1st place of 24 teams</h3>
+            <div class="issuer">Universal AI University internal hackathon for Smart India Hackathon 2026</div>
+            <p>Team Regnum Carya; my role was R&amp;D. We proposed an explainable-AI design for diabetic-retinopathy screening — a design and pitch; the software is not yet built.</p>
+          </div>
+          <div class="cred">
+            <span class="kind">Certification · Jun – Oct 2026</span>
+            <h3>Advanced AI Engineering</h3>
+            <div class="issuer">IIT Roorkee × Scaler</div>
+            <p><span class="tag tag-caveat">in progress</span></p>
+          </div>
+          <div class="cred">
+            <span class="kind">Certificate of completion · Sep 2026</span>
+            <h3>Generative AI Mastermind</h3>
+            <div class="issuer">Outskill</div>
+          </div>
+          <div class="cred">
+            <span class="kind">Certificate · 2026</span>
+            <h3>Master Python Programming</h3>
+            <div class="issuer">Udemy</div>
+          </div>
+          <div class="cred">
+            <span class="kind">Education · 2025 – 2029</span>
+            <h3>B.Tech in Artificial Intelligence &amp; Machine Learning</h3>
+            <div class="issuer">Universal AI University · School of AI &amp; Future Technologies</div>
+            <p>Second year.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section" id="contact" aria-labelledby="contact-title">
+      <div class="container">
+        <div class="section-head">
+          <span class="eyebrow">Contact</span>
+          <h2 id="contact-title">Get in touch</h2>
+          <p>I’m looking for AI engineering and research internships. Source code for the five projects is available on request.</p>
+        </div>
+        <ul class="contact-list">
+          <li><a href="mailto:ansh.aiml369@gmail.com"><span><span class="label">Email</span><br><span class="value">ansh.aiml369@gmail.com</span></span><span aria-hidden="true">→</span></a></li>
+          <li><a href="https://www.linkedin.com/in/ansh-agrawal-0738803a6/" target="_blank" rel="noopener"><span><span class="label">LinkedIn</span><br><span class="value">linkedin.com/in/ansh-agrawal-0738803a6</span></span><span aria-hidden="true">↗</span></a></li>
+          <li><a href="https://github.com/anshaiml369" target="_blank" rel="noopener"><span><span class="label">GitHub</span><br><span class="value">github.com/anshaiml369</span></span><span aria-hidden="true">↗</span></a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© 2026 Ansh Agrawal</span>
+      <span>Static site: HTML, CSS and a little JavaScript · <a href="https://github.com/anshaiml369/anshaiml369.github.io" target="_blank" rel="noopener">source</a></span>
+    </div>
+  </footer>
 </body>
 </html>

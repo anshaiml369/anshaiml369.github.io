@@ -1,0 +1,42 @@
+# Keeps the six Hugging Face Space demos awake around the clock.
+# Spaces on the cpu-basic hardware go to sleep after 48 hours without a visit; a visit every 6 hours keeps
+# them running, and there is no monthly hours limit to exhaust. The old Render deployments remain as backups.
+name: Keep project demos awake
+
+on:
+  schedule:
+    - cron: "17 */6 * * *"       # every 6 hours, every day
+  workflow_dispatch: {}          # manual run from the Actions tab
+
+permissions: {}
+
+concurrency:
+  group: keep-demos-awake
+  cancel-in-progress: false
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Ping each demo (up to 3 attempts; fails, and GitHub emails you, if one stays down)
+        run: |
+          down=0
+          while read -r name url; do
+            ok=0
+            for attempt in 1 2 3; do
+              code=$(curl -s -o /dev/null -w '%{http_code}' --max-time 120 "$url" || echo 000)
+              if [ "$code" = "200" ]; then ok=1; break; fi
+              sleep 30
+            done
+            echo "$name: HTTP $code (attempts: $attempt)"
+            [ "$ok" = 1 ] || down=1
+          done <<'LIST'
+          GraphMind https://anshag-graphmind.hf.space/health
+          CreditCompass https://anshag-creditcompass.hf.space/openapi.json
+          Moodalyx https://anshag-moodalyx.hf.space/health
+          Scholaryx https://anshag-scholaryx.hf.space/api/health
+          Warehouse https://anshag-warehouse.hf.space/api/state
+          Verbalyx https://anshag-verbalyx.hf.space/api/health
+          LIST
+          exit $down

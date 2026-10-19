@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moodalyx — Text Emotion Classification with a BiGRU · Ansh Agrawal</title>
+  <meta name="description" content="Case study: a bidirectional GRU that labels short English text with one of six emotions (dair-ai/emotion). Accuracy 0.921 and macro-F1 0.880 re-evaluated on 2,000 test sentences, with the data-leakage caveat and failure cases.">
+  <link rel="canonical" href="https://anshaiml369.github.io/projects/moodalyx.html">
+  <meta name="theme-color" content="#0a0c0f">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Moodalyx — emotion-label prediction from short English text">
+  <meta property="og:description" content="Bidirectional GRU on dair-ai/emotion: pipeline, re-evaluation, calibration, per-class results and the limits of the test score.">
+  <meta property="og:url" content="https://anshaiml369.github.io/projects/moodalyx.html">
+  <meta property="og:image" content="https://anshaiml369.github.io/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="../assets/favicon-32.png" sizes="32x32" type="image/png">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+  <link rel="stylesheet" href="../css/main.css">
+  <script src="../js/main.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container">
+      <a class="brand" href="../index.html"><span class="brand-mark" aria-hidden="true">AA</span><span>Ansh Agrawal</span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Main">
+        <ul class="nav-list">
+          <li><a href="../index.html#home">Home</a></li>
+          <li><a href="../index.html#about">About</a></li>
+          <li><a href="../index.html#projects" aria-current="page">Projects</a></li>
+          <li><a href="../index.html#skills">Skills</a></li>
+          <li><a href="../index.html#experience">Experience</a></li>
+          <li><a href="../index.html#certifications">Certifications</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="cs-hero grid-bg">
+      <div class="container">
+        <p class="breadcrumb"><a href="../index.html#projects">Projects</a> / 03</p>
+        <span class="eyebrow">Natural language processing · recurrent networks</span>
+        <h1>Moodalyx</h1>
+        <p class="subtitle">Emotion-label prediction from short English text with a bidirectional GRU.</p>
+        <dl class="metrics" style="max-width:760px">
+          <div class="metric"><dt>Accuracy (2,000 test sentences)</dt><dd>0.921</dd><dd class="src"><span class="tag tag-reeval">re-evaluated</span></dd></div>
+          <div class="metric"><dt>Macro-F1</dt><dd>0.880</dd><dd class="src"><span class="tag tag-reeval">re-evaluated</span></dd></div>
+          <div class="metric"><dt>Expected calibration error</dt><dd>0.048</dd><dd class="src"><span class="tag tag-reeval">re-evaluated</span></dd></div>
+        </dl>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="https://anshaiml369.github.io/moodalyx/" target="_blank" rel="noopener">Live demo</a>
+          <a class="btn" href="#demo">Watch demo</a>
+          <span class="note-inline">Code on request · the test score is optimistic — see limitations</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="container cs-layout">
+      <nav class="toc" aria-label="On this page">
+        <ol>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#problem">Problem</a></li>
+          <li><a href="#motivation">Motivation</a></li>
+          <li><a href="#architecture">Architecture</a></li>
+          <li><a href="#implementation">Implementation</a></li>
+          <li><a href="#data">Data</a></li>
+          <li><a href="#model">Model design</a></li>
+          <li><a href="#evaluation">Evaluation method</a></li>
+          <li><a href="#results">Results</a></li>
+          <li><a href="#demo">Demo video</a></li>
+          <li><a href="#deployment">Deployment</a></li>
+          <li><a href="#limitations">Limitations</a></li>
+          <li><a href="#future">Future work</a></li>
+        </ol>
+      </nav>
+
+      <article class="cs-content">
+        <section class="cs-section" id="overview">
+          <h2><span class="n">01</span>Overview</h2>
+          <p>Moodalyx is a text classifier that predicts which of six emotion labels a short English sentence most resembles — sadness, joy, love, anger, fear or surprise — and returns the full probability distribution. It analyses <strong>text only</strong>; it does not use images, faces or audio.</p>
+          <p>The model and training notebook began from a public tutorial. The project was extended with a research interface, a re-evaluation of the saved model (per-class metrics, calibration and error analysis), deployment and this account of its limitations.</p>
+          <div class="callout callout-warn"><strong>What it does not do</strong>It predicts which dataset label a sentence resembles. It does not measure anyone’s emotional or psychological state, has no “neutral” option, and can be confidently wrong.</div>
+        </section>
+
+        <section class="cs-section" id="problem">
+          <h2><span class="n">02</span>Problem statement</h2>
+          <p>Single-label, six-class classification of short English text. The classes are imbalanced: in the test split, joy has 695 sentences and surprise only 66, so accuracy alone hides how the rarer emotions are handled.</p>
+        </section>
+
+        <section class="cs-section" id="motivation">
+          <h2><span class="n">03</span>Motivation</h2>
+          <p>Emotion in text depends on word order and context (“not happy” versus “happy”), which makes it a natural test for sequence models. A bidirectional recurrent network reads each sentence in both directions, so every position sees context on both sides.</p>
+        </section>
+
+        <section class="cs-section" id="architecture">
+          <h2><span class="n">04</span>System architecture</h2>
+          <ol class="flow" aria-label="Moodalyx pipeline">
+            <li><strong>Clean</strong> — lower-case, drop apostrophes, replace other non-alphanumeric characters with spaces, collapse whitespace.</li>
+            <li><strong>Tokenise</strong> — a Keras tokenizer with the 10,000 most frequent training words; other words become <code>&lt;unk&gt;</code>.</li>
+            <li><strong>Pad</strong> — pad or truncate to exactly 50 tokens.</li>
+            <li><strong>Encode</strong> — 300-dimensional embedding → bidirectional GRU (128) → dropout 0.5 → bidirectional GRU (64) → dropout 0.5.</li>
+            <li><strong>Classify</strong> — dense softmax over six labels; the API returns every probability and the top label.</li>
+          </ol>
+          <figure class="cs-figure">
+            <img src="../assets/viz/moodalyx.svg" width="640" height="400" loading="lazy" alt="Live prediction for “I was shocked and completely surprised by the unexpected gift!”: surprise 97.6 percent, fear 1.4, joy 0.8, anger 0.2, sadness and love below 0.1 percent.">
+            <figcaption>A real response from the deployed API.</figcaption>
+          </figure>
+        </section>
+
+        <section class="cs-section" id="implementation">
+          <h2><span class="n">05</span>Technical implementation</h2>
+          <ul>
+            <li>Training in TensorFlow/Keras: Adam, sparse categorical cross-entropy, balanced class weights, batch size 32, up to 20 epochs, early stopping on validation loss (patience 3, best weights restored).</li>
+            <li>3,454,662 trainable parameters; the saved model is 41 MB.</li>
+            <li>FastAPI loads the model and tokenizer once at start-up and applies exactly the same cleaning as the evaluation script.</li>
+          </ul>
+        </section>
+
+        <section class="cs-section" id="data">
+          <h2><span class="n">06</span>Dataset and preparation</h2>
+          <p><strong>dair-ai/emotion</strong> (Saravia et al., 2018, “CARER”): short English posts labelled with six emotions, mostly beginning with phrases such as “i feel …”. Split: 16,000 training, 2,000 validation and 2,000 test sentences. On the test split, 3.3 % of words are outside the 10,000-word vocabulary.</p>
+        </section>
+
+        <section class="cs-section" id="model">
+          <h2><span class="n">07</span>Model design</h2>
+          <p>The notebook trained a simple RNN, an LSTM and a GRU before the bidirectional GRU. Those three runs reached only 0.265, 0.340 and 0.289 test accuracy — no better than always predicting the most common label (0.348) — so they <strong>failed to train</strong> and are not meaningful baselines. The bidirectional GRU is the deployed model; a properly trained simple baseline (for example TF-IDF with logistic regression) is still missing.</p>
+        </section>
+
+        <section class="cs-section" id="evaluation">
+          <h2><span class="n">08</span>Evaluation methodology</h2>
+          <ul>
+            <li>The saved model is re-scored on all 2,000 test sentences through the same preprocessing the API uses.</li>
+            <li>Calibration is measured with a 10-bin reliability diagram and expected calibration error.</li>
+            <li>The live deployment was checked against the local model on 200 random test sentences.</li>
+          </ul>
+        </section>
+
+        <section class="cs-section" id="results">
+          <h2><span class="n">09</span>Verified results</h2>
+          <div class="table-wrap"><table>
+            <caption>Test split, n = 2,000. Re-evaluated from the saved model; accuracy matches the training notebook.</caption>
+            <tbody>
+              <tr><th scope="row">Accuracy</th><td class="num">0.921</td></tr>
+              <tr><th scope="row">Macro-F1</th><td class="num">0.880</td></tr>
+              <tr><th scope="row">Weighted F1</th><td class="num">0.922</td></tr>
+              <tr><th scope="row">Expected calibration error (10 bins)</th><td class="num">0.048</td></tr>
+              <tr><th scope="row">Always predict “joy” (majority class)</th><td class="num">0.348</td></tr>
+            </tbody>
+          </table></div>
+          <h3>Per-label F1</h3>
+          <div class="table-wrap"><table>
+            <thead><tr><th scope="col">Label</th><th scope="col" class="num">F1</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">sadness</th><td class="num">0.963</td></tr>
+              <tr><th scope="row">joy</th><td class="num">0.939</td></tr>
+              <tr><th scope="row">anger</th><td class="num">0.936</td></tr>
+              <tr><th scope="row">fear</th><td class="num">0.873</td></tr>
+              <tr><th scope="row">love</th><td class="num">0.814</td></tr>
+              <tr><th scope="row">surprise</th><td class="num">0.755</td></tr>
+            </tbody>
+          </table></div>
+          <p>The live deployment gave the same label as the local model for all 200 sampled test sentences, with probabilities within 0.000001. Accuracy on that random sample was 0.890, lower than the full-split 0.921 — a reminder that 200 sentences is a small sample.</p>
+        </section>
+
+        <section class="cs-section" id="demo">
+          <h2><span class="n">10</span>Demonstration video</h2>
+          <div class="cs-figure">
+            <div class="video-frame">
+              <button class="video-play" type="button" data-src="../recordings/moodalyx.mp4" data-poster="../assets/posters/moodalyx.jpg" data-label="Moodalyx demo video">
+                <img src="../assets/posters/moodalyx.jpg" width="800" height="500" loading="lazy" alt="">
+                <span class="play-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 5v14l12-7z"/></svg></span>
+                <span class="duration">1:07</span><span class="sr-only">Play Moodalyx demo, 1 minute 7 seconds</span>
+              </button>
+            </div>
+            <p class="video-caption">Recorded on the live deployment, 11 October 2026; no audio. Four sentences are analysed. “I can’t believe how happy I am right now, this is amazing!” is labelled <strong>fear</strong> (0.53; joy only 0.14) — a real error kept in the video — and a factual sentence is forced into “anger” (0.38).</p>
+          </div>
+        </section>
+
+        <section class="cs-section" id="deployment">
+          <h2><span class="n">11</span>Deployment and source code</h2>
+          <ul>
+            <li><strong>Live demo:</strong> <a href="https://anshaiml369.github.io/moodalyx/" target="_blank" rel="noopener">anshaiml369.github.io/moodalyx</a> — Hugging Face Space (Docker, CPU-only TensorFlow, 2 vCPU, 16 GB); it returns the same predictions as the earlier Render deployment. Locally the server used about 513 MB, close to Render’s 512 MB free plan; on Render it served more than 200 consecutive requests without a restart. Most predictions took about a second, the slowest 9.5 s.</li>
+            <li><strong>Source code:</strong> available on request.</li>
+          </ul>
+        </section>
+
+        <section class="cs-section" id="limitations">
+          <h2><span class="n">12</span>Limitations and known failure modes</h2>
+          <ul>
+            <li><strong>Optimistic test score (data leakage).</strong> The notebook passed the test split as <code>validation_data</code>, so early stopping and weight restoration used the test set. The dataset’s separate validation split was not used.</li>
+            <li><strong>Narrow domain.</strong> Training sentences are short posts that mostly begin with “i feel …”; other writing styles, sarcasm, negation and long text are poorly represented.</li>
+            <li><strong>No neutral class.</strong> Every input receives one of six emotions, including purely factual sentences.</li>
+            <li><strong>Weaker minority classes.</strong> Surprise (66 test sentences) and love (159) have the lowest F1; class weights only partly compensate.</li>
+            <li><strong>Labels come from hashtags</strong> in the original data, so some are noisy or debatable.</li>
+            <li>Inputs are truncated to 50 tokens, and words outside the vocabulary are lost.</li>
+          </ul>
+        </section>
+
+        <section class="cs-section" id="future">
+          <h2><span class="n">13</span>Future improvements</h2>
+          <ul>
+            <li>Retrain with the validation split for early stopping and report a clean test score.</li>
+            <li>Add a TF-IDF + logistic-regression baseline and train over several seeds.</li>
+            <li>Add an abstain or neutral option driven by the probability margin.</li>
+          </ul>
+          <nav class="cs-next" aria-label="Other case studies">
+            <a href="scholaryx.html"><span class="dir">← Previous</span>Scholaryx — multi-agent research pipeline</a>
+            <a href="creditcompass.html"><span class="dir">Next →</span>CreditCompass — calibrated credit-risk model</a>
+          </nav>
+        </section>
+      </article>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <span>© 2026 Ansh Agrawal</span>
+      <span><a href="../index.html#contact">Contact</a> · <a href="../index.html#projects">All projects</a></span>
+    </div>
+  </footer>
+</body>
+</html>
