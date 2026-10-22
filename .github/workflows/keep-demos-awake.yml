@@ -1,4 +1,4 @@
-# Keeps the six Hugging Face Space demos awake around the clock.
+# Keeps the five Hugging Face Space demos awake around the clock.
 # Spaces on the cpu-basic hardware go to sleep after 48 hours without a visit; a visit every 6 hours keeps
 # them running, and there is no monthly hours limit to exhaust. The old Render deployments remain as backups.
 name: Keep project demos awake
@@ -36,7 +36,6 @@ jobs:
           CreditCompass https://anshag-creditcompass.hf.space/openapi.json
           Moodalyx https://anshag-moodalyx.hf.space/health
           Scholaryx https://anshag-scholaryx.hf.space/api/health
-          Warehouse https://anshag-warehouse.hf.space/api/state
           Verbalyx https://anshag-verbalyx.hf.space/api/health
           LIST
           exit $down
